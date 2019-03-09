@@ -1,0 +1,21 @@
+# Maintained by: espo (Moritz.Lutz@gmail.com) for: http://github.com/lutzmor/hp_z600_workstation
+
+# Last Updated  : 05/03/2019
+# Patch Name    : LPBC patch
+# Patch Version : 1.0
+
+into device label LPC Insert begin
+Method (ZDSM, 4, NotSerialized)\n
+{\n
+    Local0 = Package (0x02)\n
+    {\n
+        "AAPL,slot-name", "Built In",\n
+		"name", "Low Pin Count Controller",\n
+		"model", Buffer (0x2D) {"Intel LPC Controller"},\n
+		"device_type", Buffer (0x0F) {"Low Pin Count Controller"},\n
+        "device-id", Buffer (0x04) { 0x18, 0x3A, 0x00, 0x00 }\n
+    }\n
+    DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))\n
+    Return (Local0)\n
+}\n
+end;
