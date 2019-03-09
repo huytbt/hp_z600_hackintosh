@@ -5,17 +5,7 @@
 # Patch Version : 1.0
 
 # Tasks
-# 1. Task Remove all ZDSM Stuff from USB
-# 2. Task recreate the ZDSM Stuff with Descriptions and so on
-
-into method label ZDSM parent_label EUS1 remove_entry;
-into method label ZDSM parent_label EUS2 remove_entry;
-into method label ZDSM parent_label UHC2 remove_entry;
-into method label ZDSM parent_label UHC3 remove_entry;
-into method label ZDSM parent_label UHC4 remove_entry;
-into method label ZDSM parent_label UHC5 remove_entry;
-into method label ZDSM parent_label UHC6 remove_entry;
-into method label ZDSM parent_label UHC7 remove_entry;
+# 1. Task recreate the ZDSM Stuff with Descriptions and so on
 
 into device label UHC2 Insert begin
 Method (ZDSM, 4, NotSerialized)\n
