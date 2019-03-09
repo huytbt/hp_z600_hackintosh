@@ -1,0 +1,268 @@
+# Maintained by: espo (Moritz.Lutz@gmail.com) for: http://github.com/lutzmor/hp_z600_workstation
+
+# Last Updated  : 05/03/2019
+# Patch Name    : PCI cleanup patch
+# Patch Version : 1.0
+
+# Tasks
+# 1. Task Remove all _DSM Stuff from USB
+# 2. Task recreate the _DSM Stuff with Descriptions and so on
+
+into method label _DSM parent_label EUS1 remove_entry;
+into method label _DSM parent_label EUS2 remove_entry;
+into method label _DSM parent_label UHC2 remove_entry;
+into method label _DSM parent_label UHC3 remove_entry;
+into method label _DSM parent_label UHC4 remove_entry;
+into method label _DSM parent_label UHC5 remove_entry;
+into method label _DSM parent_label UHC6 remove_entry;
+into method label _DSM parent_label UHC7 remove_entry;
+
+into device label UHC2 Insert begin
+Method (_DSM, 4, NotSerialized)\n
+{\n
+    Store (Package (0x16)\n
+    {\n
+        "AAPL,slot-name", "Built In",\n
+		"name", "Intel USB Controller",\n
+		"model", Buffer (0x2D) {"82801JI (ICH10 Family) USB1 UHCI Controller #1"},\n
+		"device_type", Buffer (0x0F) {"USB Controller"},\n
+        "device-id", Buffer (0x04) { 0x34, 0x3B, 0x00, 0x00 },\n
+    }, Local0)\n
+    DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))\n
+    Return (Local0)\n
+}\n
+end;
+
+into device label UHC3 insert begin
+Method (_DSM, 4, NotSerialized)\n
+{\n
+    Store (Package (0x16)\n
+    {\n
+        "AAPL,slot-name", "Built In",\n
+		"name", "Intel USB Controller",\n
+		"model", Buffer (0x2D) {"82801JI (ICH10 Family) USB1 UHCI Controller #2"},\n
+		"device_type", Buffer (0x0F) {"USB Controller"},\n
+        "device-id", Buffer (0x04) { 0x35, 0x3B, 0x00, 0x00 },\n
+    }, Local0)\n
+    DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))\n
+    Return (Local0)\n
+}\n
+end;
+
+into device label UHC4 insert begin
+Method (_DSM, 4, NotSerialized)\n
+{\n
+    Store (Package (0x16)\n
+    {\n
+        "AAPL,slot-name", "Built In",\n
+		"name", "Intel USB Controller",\n
+		"model", Buffer (0x2D) {"82801JI (ICH10 Family) USB1 UHCI Controller #3"},\n
+		"device_type", Buffer (0x0F) {"USB Controller"},\n
+        "device-id", Buffer (0x04) { 0x36, 0x3B, 0x00, 0x00 },\n
+    }, Local0)\n
+    DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))\n
+    Return (Local0)\n
+}\n
+end;
+
+into device label UHC5 insert begin
+Method (_DSM, 4, NotSerialized)\n
+{\n
+    Store (Package (0x16)\n
+    {\n
+        "AAPL,slot-name", "Built In",\n
+		"name", "Intel USB Controller",\n
+		"model", Buffer (0x2D) {"82801JI (ICH10 Family) USB1 UHCI Controller #4"},\n
+		"device_type", Buffer (0x0F) {"USB Controller"},\n
+        "device-id", Buffer (0x04) { 0x37, 0x3B, 0x00, 0x00 },\n
+    }, Local0)\n
+    DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))\n
+    Return (Local0)\n
+}\n
+end;
+
+into device label UHC6 insert begin
+Method (_DSM, 4, NotSerialized)\n
+{\n
+    Store (Package (0x16)\n
+    {\n
+        "AAPL,slot-name", "Built In",\n
+		"name", "Intel USB Controller",\n
+		"model", Buffer (0x2D) {"82801JI (ICH10 Family) USB1 UHCI Controller #5"},\n
+		"device_type", Buffer (0x0F) {"USB Controller"},\n
+        "device-id", Buffer (0x04) { 0x38, 0x3A, 0x00, 0x00 },\n
+        "built-in", Buffer (0x01) { 0x00 },\n
+        "device_type", Buffer (0x05) { "UHCI" },\n 
+        "AAPL,clock-id", Buffer (0x01) { 0x00 }\n
+    }, Local0)\n
+    DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))\n
+    Return (Local0)\n
+}\n
+end;
+
+into device label UHC7 insert begin
+Method (_DSM, 4, NotSerialized)\n
+{\n
+    Store (Package (0x16)\n
+    {\n
+        "AAPL,slot-name", "Built In",\n
+		"name", "Intel USB Controller",\n
+		"model", Buffer (0x2D) {"82801JI (ICH10 Family) USB1 UHCI Controller #6"},\n
+		"device_type", Buffer (0x0F) {"USB Controller"},\n
+        "device-id", Buffer (0x04) { 0x39, 0x3A, 0x00, 0x00 },\n
+        "built-in", Buffer (0x01) { 0x00 },\n
+        "device_type", Buffer (0x05) { "UHCI" },\n 
+        "AAPL,clock-id", Buffer (0x01) { 0x00 }\n
+    }, Local0)\n
+    DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))\n
+    Return (Local0)\n
+}\n
+end;
+
+into device label EUS1 insert begin
+Method (_DSM, 4, NotSerialized)\n
+{\n
+    Store (Package (0x1E)\n
+    {\n
+        "AAPL,slot-name", "Built In",\n
+		"name", "Intel USB2 Controller",\n
+		"model", Buffer (0x2D) {"82801JI (ICH10 Family) USB2 EHCI Controller #1"},\n
+		"device_type", Buffer (0x0F) {"USB2 Controller"},\n
+        "device-id", Buffer (0x04) { 0x3A, 0x3A, 0x00, 0x00 },\n 
+        "built-in", Buffer (0x01) { 0x00 },\n
+        "device_type", Buffer (0x05) { "EHCI" },\n 
+        "AAPL,clock-id", Buffer (0x01) { 0x00 },\n
+        "AAPL,current-available", 0x05DC,\n
+        "AAPL,current-extra", 0x03E8,\n
+        "AAPL,current-in-sleep", 0x0BB8, Buffer (0x01) { 0x00 }\n
+    }, Local0)\n
+    DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))\n
+    Return (Local0)\n
+}\n
+end;
+
+into device label EUS2 insert begin
+Method (_DSM, 4, NotSerialized)\n
+{\n
+	Store (Package (0x1E) {\n
+		"AAPL,slot-name", "Built In",\n
+		"name", "Intel USB2 Controller",\n
+		"model", Buffer (0x2D) {"82801JI (ICH10 Family) USB2 EHCI Controller #2"},\n
+		"device_type", Buffer (0x0F) {"USB2 Controller"},\n
+        "device-id", Buffer (0x04) { 0x3C, 0x3A, 0x00, 0x00 },\n 
+        "built-in", Buffer (0x01) { 0x00 },\n
+        "device_type", Buffer (0x05) { "EHCI" },\n 
+        "AAPL,clock-id", Buffer (0x01) { 0x00 },\n
+        "AAPL,current-available", 0x05DC,\n
+        "AAPL,current-extra", 0x03E8,\n
+        "AAPL,current-in-sleep", 0x0BB8, Buffer (0x01) { 0x00 }\n
+	}, Local0)\n
+	DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))\n
+	Return (Local0)\n
+}
+end;
+
+into device label PCX1 insert begin
+Method (_DSM, 4, NotSerialized)\n
+{\n
+    Store (Package (0x16)\n
+    {\n
+        "AAPL,slot-name", "Built In",\n
+		"name", "Intel PCIE Controller",\n
+		"model", Buffer (0x2D) {"82801JI (ICH10 Family) PCI Express Root Port #1"},\n
+		"device_type", Buffer (0x0F) {"PCIE Controller"}\n
+    }, Local0)\n
+    DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))\n
+    Return (Local0)\n
+}\n
+end;
+
+into device label PCX6 insert begin
+Method (_DSM, 4, NotSerialized)\n
+{\n
+    Store (Package (0x16)\n
+    {\n
+        "AAPL,slot-name", "Built In",\n
+		"name", "Intel PCIE Controller",\n
+		"model", Buffer (0x2D) {"82801JI (ICH10 Family) PCI Express Root Port #5"},\n
+		"device_type", Buffer (0x0F) {"PCIE Controller"}\n
+    }, Local0)\n
+    DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))\n
+    Return (Local0)\n
+}\n
+end;
+
+into device label IOH1 insert begin
+Method (_DSM, 4, NotSerialized)\n
+{\n
+    Store (Package (0x16)\n
+    {\n
+        "AAPL,slot-name", "Built In",\n
+		"name", "Intel HUB PCIE Controller",\n
+		"model", Buffer (0x2D) {"5520/5500/X58 I/O Hub PCI Express Root Port #1"},\n
+		"device_type", Buffer (0x0F) {"HUB PCIE Controller"}\n
+    }, Local0)\n
+    DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))\n
+    Return (Local0)\n
+}\n
+end;
+
+into device label IOH3 insert begin
+Method (_DSM, 4, NotSerialized)\n
+{\n
+    Store (Package (0x16)\n
+    {\n
+        "AAPL,slot-name", "Built In",\n
+		"name", "Intel HUB PCIE Controller",\n
+		"model", Buffer (0x2D) {"5520/5500/X58 I/O Hub PCI Express Root Port #3"},\n
+		"device_type", Buffer (0x0F) {"HUB PCIE Controller"}\n
+    }, Local0)\n
+    DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))\n
+    Return (Local0)\n
+}\n
+end;
+
+into device label IOH1 insert begin
+Method (_DSM, 4, NotSerialized)\n
+{\n
+    Store (Package (0x16)\n
+    {\n
+        "AAPL,slot-name", "Built In",\n
+		"name", "Intel HUB PCIE Controller",\n
+		"model", Buffer (0x2D) {"5520/5500/X58 I/O Hub PCI Express Root Port #7"},\n
+		"device_type", Buffer (0x0F) {"HUB PCIE Controller"}\n
+    }, Local0)\n
+    DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))\n
+    Return (Local0)\n
+}\n
+end;
+
+into device label IGBE insert begin
+Method (_DSM, 4, NotSerialized)\n
+{\n
+    Store (Package (0x16)\n
+    {\n
+        "AAPL,slot-name", "Built In",\n
+		"name", "Broadcom Network Controller",\n
+		"model", Buffer (0x2D) {"NetXtreme BCM5764M Gigabit Ethernet PCIe"},\n
+		"device_type", Buffer (0x0F) {"Network Controller"}\n
+    }, Local0)\n
+    DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))\n
+    Return (Local0)\n
+}\n
+end;
+
+into device label HUB insert begin
+Method (_DSM, 4, NotSerialized)\n
+{\n
+    Store (Package (0x16)\n
+    {\n
+        "AAPL,slot-name", "Built In",\n
+		"name", "Hub to ESI Controller",\n
+		"model", Buffer (0x2D) {"5520 I/O Hub to ESI Port"},\n
+		"device_type", Buffer (0x0F) {"Hub to ESI Controller"}\n
+    }, Local0)\n
+    DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))\n
+    Return (Local0)\n
+}\n
+end;

@@ -1,0 +1,24 @@
+# Maintained by: espo (Moritz.Lutz@gmail.com) for: http://github.com/lutzmor/hp_z600_workstation
+
+# Last Updated  : 05/03/2019
+# Patch Name    : SATA patch
+# Patch Version : 1.0
+
+into device label PCI0 insert
+begin
+Device (SATA)\n
+{\n
+    Method (_DSM, 4, NotSerialized)\n
+    {\n
+        Local0 = Package ()\n
+        {\n
+            "AAPL,slot-name", "Built In",\n
+		    "name", "SATA Controller",\n
+		    "model", Buffer (0x2D) {"82801 SATA Controller [RAID mode]"},\n
+		    "device_type", Buffer (0x0F) {"SATA Controller"},\n
+        }\n
+        DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))\n
+        Return (Local0)\n
+    }\n
+}\n
+end;

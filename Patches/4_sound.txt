@@ -1,0 +1,60 @@
+# Maintained by: espo (Moritz.Lutz@gmail.com) for: http://github.com/lutzmor/hp_z600_workstation
+
+# Last Updated  : 05/03/2019
+# Patch Name    : Sound patch
+# Patch Version : 1.0
+
+into device name_adr 0x001B0000 set_label begin HDEF end;
+into device label PCI0 insert
+begin
+Device (HDEF)\n
+{\n
+    OperationRegion (HDAR, PCI_Config, 0x4C, 0x10)\n
+    Field (HDAR, WordAcc, NoLock, Preserve)\n
+    {\n
+        DCKA,   1, \n
+        Offset (0x01),\n 
+        DCKM,   1, \n
+            ,   6, \n
+        DCKS,   1, \n
+        Offset (0x08),\n 
+            ,   15, \n
+        PMES,   1\n
+    }\n
+\n
+    Name (_ADR, 0x001B0000)  // _ADR: Address\n
+    Method (_PRW, 0, NotSerialized)  // _PRW: Power Resources for Wake\n
+    {\n
+        Return (Package (0x02) { 0x0D, 0x05 })\n
+    }\n
+\n
+    Method (_DSM, 4, NotSerialized)\n
+    {\n
+        Local0 = Package ()\n
+        {\n
+            "AAPL,slot-name", "Built In",\n
+		    "name", "Audio Controller",\n
+		    "model", Buffer (0x2D) {"Realtek HD ALC262 Audio"},\n
+		    "device_type", Buffer (0x0F) {"Audio Controller"},\n
+            "layout-id", Buffer() { 0x15, 0x00, 0x00, 0x00 },\n
+            "PinConfigurations", Buffer(Zero) {},\n
+  	        "hda-gfx", Buffer() { "onboard-1" },\n
+            "CodecAddressMask", Buffer (One) { 0x01 }, \n
+            "device-id", Buffer (0x04) { 0x3E, 0x3A, 0x00, 0x00 }, \n
+            "subsystem-id", Buffer (0x04) { 0x09, 0x13, 0x00, 0x00 },\n 
+            "subsystem-vendor-id", Buffer (0x04) { 0x3C, 0x10, 0x00, 0x00 }, \n
+            "MaximumBootBeepVolume", Buffer (One) { 0x40 }, \n
+            "layout-id", Buffer (0x04) { 0x1C, 0x00, 0x00, 0x00 }, \n
+            "PinConfigurations", Buffer (0x10) \n
+                                {\n
+                                    0x30, 0x01, 0x10, 0x90, 0x40, 0x00, 0x21, 0x01,\n
+                                    0x20, 0x00, 0x81, 0x01, 0x10, 0x01, 0xA0, 0x90 \n
+                                }, \n
+            "platformFamily", Buffer (One) { 0x00 }, \n
+            "hda-gfx", Buffer (0x0A) { "onboard-1" }\n
+        }\n
+        DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))\n
+        Return (Local0)\n
+    }\n
+}\n
+end;

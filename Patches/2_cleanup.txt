@@ -1,0 +1,61 @@
+# Maintained by: espo (Moritz.Lutz@gmail.com) for: http://github.com/lutzmor/hp_z600_workstation
+
+# Last Updated  : 05/03/2019
+# Patch Name    : Cleanup patch
+# Patch Version : 1.0
+
+# Tasks
+# 1. Task Remove all _S5D Methods
+# 2. Cleanup Method parameters
+# 3. Change Size to fit
+# 4. Remove unused Variables
+
+# Remove _S5D Methods
+into method label _S5D parent_label EUS1 remove_entry;
+into method label _S5D parent_label EUS2 remove_entry;
+into method label _S5D parent_label UHC2 remove_entry;
+into method label _S5D parent_label UHC3 remove_entry;
+into method label _S5D parent_label UHC4 remove_entry;
+into method label _S5D parent_label UHC5 remove_entry;
+into method label _S5D parent_label UHC6 remove_entry;
+into method label _S5D parent_label UHC7 remove_entry;
+into method label _S5D parent_label IOH1 remove_entry;
+into method label _S5D parent_label IOH3 remove_entry;
+into method label _S5D parent_label IOH7 remove_entry;
+into method label _S5D parent_label IGBE remove_entry;
+into method label _S5D parent_label PCX1 remove_entry;
+into method label _S5D parent_label PCX6 remove_entry;
+into method label _S5D parent_label HUB remove_entry;
+into method label _S5D parent_label PCI0 remove_entry;
+
+# Cleanup Method parameters
+into_all all code_regex _SB.PCI0.IGBE,\sLocal0 replaceall_matched begin _SB.PCI0.IGBE end;
+into_all all code_regex _OSI,\sLocal0 replaceall_matched begin _OSI end;
+
+# Change Size to fit
+into_all all code_regex CreateByteField\s\(CRES,\s0x0B,\sIORH\) replaceall_matched begin CreateWordField (CRES, 0x0B, IORH) end;
+into_all all code_regex CreateByteField\s\(CRES,\s\\_SB.PCI0.LPC.ECP0._Y1A._MIN,\sIOLO\) replaceall_matched begin CreateWordField (CRES, \\_SB.PCI0.LPC.ECP0._Y1A._MIN, IOLO) end;
+into_all all code_regex CreateByteField\s\(CRES,\s\\_SB.PCI0.LPC.ECP0._Y1A._MAX,\sIORL\) replaceall_matched begin CreateWordField (CRES, \\_SB.PCI0.LPC.ECP0._Y1A._MAX, IORL) end;
+into_all all code_regex CreateByteField\s\(CRES,\s\\_SB.PCI0.LPC.ECP0._Y1B._MIN,\sISL1\) replaceall_matched begin CreateWordField (CRES, \\_SB.PCI0.LPC.ECP0._Y1B._MIN, ISL1) end;
+into_all all code_regex CreateByteField\s\(CRES,\s\\_SB.PCI0.LPC.ECP0._Y1B._MAX,\sISL2\) replaceall_matched begin CreateWordField (CRES, \\_SB.PCI0.LPC.ECP0._Y1B._MAX, ISL2) end;
+into_all all code_regex CreateByteField\s\(CRES,\s\\_SB.PCI0.LPC.LPT0._Y1D._MIN,\sIOLO\) replaceall_matched begin CreateWordField (CRES, \\_SB.PCI0.LPC.LPT0._Y1D._MIN, IOLO) end;
+into_all all code_regex CreateByteField\s\(CRES,\s\\_SB.PCI0.LPC.LPT0._Y1D._MAX,\sIORL\) replaceall_matched begin CreateWordField (CRES, \\_SB.PCI0.LPC.LPT0._Y1D._MAX, IORL) end;
+into_all all code_regex CreateByteField\s\(CRES,\s\\_SB.PCI0.LPC.COM1._Y1F._MIN,\sIOLO\) replaceall_matched begin CreateWordField (CRES, \\_SB.PCI0.LPC.COM1._Y1F._MIN, IOLO) end;
+into_all all code_regex CreateByteField\s\(CRES,\s\\_SB.PCI0.LPC.COM1._Y1F._MAX,\sIORL\) replaceall_matched begin CreateWordField (CRES, \\_SB.PCI0.LPC.COM1._Y1F._MAX, IORL) end;
+into_all all code_regex CreateByteField\s\(CRES,\s\\_SB.PCI0.LPC.COM2._Y21._MIN,\sIOLO\) replaceall_matched begin CreateWordField (CRES, \\_SB.PCI0.LPC.COM2._Y21._MIN, IOLO) end;
+into_all all code_regex CreateByteField\s\(CRES,\s\\_SB.PCI0.LPC.COM2._Y21._MAX,\sIORL\) replaceall_matched begin CreateWordField (CRES, \\_SB.PCI0.LPC.COM2._Y21._MAX, IORL) end;
+
+into_all all code_regex CreateByteField\s\(CRES,\s\\_SB.PCI0.LPC.ECP0._Y11._MIN,\sIOLO\) replaceall_matched begin CreateWordField (CRES, \\_SB.PCI0.LPC.ECP0._Y11._MIN, IOLO) end;
+into_all all code_regex CreateByteField\s\(CRES,\s\\_SB.PCI0.LPC.ECP0._Y11._MAX,\sIORL\) replaceall_matched begin CreateWordField (CRES, \\_SB.PCI0.LPC.ECP0._Y11._MAX, IORL) end;
+into_all all code_regex CreateByteField\s\(CRES,\s\\_SB.PCI0.LPC.ECP0._Y12._MIN,\sISL1\) replaceall_matched begin CreateWordField (CRES, \\_SB.PCI0.LPC.ECP0._Y12._MIN, ISL1) end;
+into_all all code_regex CreateByteField\s\(CRES,\s\\_SB.PCI0.LPC.ECP0._Y12._MAX,\sISL2\) replaceall_matched begin CreateWordField (CRES, \\_SB.PCI0.LPC.ECP0._Y12._MAX, ISL2) end;
+into_all all code_regex CreateByteField\s\(CRES,\s\\_SB.PCI0.LPC.LPT0._Y13._MIN,\sIOLO\) replaceall_matched begin CreateWordField (CRES, \\_SB.PCI0.LPC.LPT0._Y13._MIN, IOLO) end;
+into_all all code_regex CreateByteField\s\(CRES,\s\\_SB.PCI0.LPC.LPT0._Y13._MAX,\sIORL\) replaceall_matched begin CreateWordField (CRES, \\_SB.PCI0.LPC.LPT0._Y13._MAX, IORL) end;
+into_all all code_regex CreateByteField\s\(CRES,\s\\_SB.PCI0.LPC.COM1._Y14._MIN,\sIOLO\) replaceall_matched begin CreateWordField (CRES, \\_SB.PCI0.LPC.COM1._Y14._MIN, IOLO) end;
+into_all all code_regex CreateByteField\s\(CRES,\s\\_SB.PCI0.LPC.COM1._Y14._MAX,\sIORL\) replaceall_matched begin CreateWordField (CRES, \\_SB.PCI0.LPC.COM1._Y14._MAX, IORL) end;
+into_all all code_regex CreateByteField\s\(CRES,\s\\_SB.PCI0.LPC.COM2._Y15._MIN,\sIOLO\) replaceall_matched begin CreateWordField (CRES, \\_SB.PCI0.LPC.COM2._Y15._MIN, IOLO) end;
+into_all all code_regex CreateByteField\s\(CRES,\s\\_SB.PCI0.LPC.COM2._Y15._MAX,\sIORL\) replaceall_matched begin CreateWordField (CRES, \\_SB.PCI0.LPC.COM2._Y15._MAX, IORL) end;
+
+# Remove unused Variables
+into method label WQAF parent_label WMID code_regex Local5\s=\sZero remove_matched;
+into method label WQAF parent_label WMID code_regex Local5\s=\s0x00 remove_matched;
