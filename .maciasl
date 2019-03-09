@@ -1,7 +1,7 @@
-[1] Rename devices	patches/1_rename_devices.txt
-[2] Cleanup DSDT	patches/2_cleanup.txt
-[3] Create DTGP Method	patches/3_create_DTGP.txt
-[4] Fix sound	patches/4_sound.txt
-[5] PCI Documentation	patches/5_PCI_cleanup.txt
-[6] Fix Sata  patches/6_SATA.txt
-[7] Misc stuff patches/7_misc.txt
+[1] Rename devices	Patches/1_rename_devices.txt
+[2] Cleanup DSDT	Patches/2_cleanup.txt
+[3] Create DTGP Method	Patches/3_create_DTGP.txt
+[4] Fix sound	Patches/4_sound.txt
+[5] PCI Documentation	Patches/5_PCI_cleanup.txt
+[6] Fix Sata  Patches/6_SATA.txt
+[7] Misc stuff Patches/7_misc.txt
