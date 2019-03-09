@@ -1,1 +1,3 @@
-# hp_z600_hackintosh
+# MacOSX on a HP Z600 Workstation
+
+ToDo ....
