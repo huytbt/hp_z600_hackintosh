@@ -10,6 +10,7 @@ Device (SATA)\n
 {\n
     Method (ZDSM, 4, NotSerialized)\n
     {\n
+        Name (_ADR, 0x00)\n
         Local0 = Package ()\n
         {\n
             "AAPL,slot-name", "Built In",\n
