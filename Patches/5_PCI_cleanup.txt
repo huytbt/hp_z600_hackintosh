@@ -6,6 +6,21 @@
 
 # Tasks
 # 1. Task recreate the ZDSM Stuff with Descriptions and so on
+into method label ZDSM parent_label EUS1 remove_entry;
+into method label ZDSM parent_label EUS2 remove_entry;
+into method label ZDSM parent_label UHC2 remove_entry;
+into method label ZDSM parent_label UHC3 remove_entry;
+into method label ZDSM parent_label UHC4 remove_entry;
+into method label ZDSM parent_label UHC5 remove_entry;
+into method label ZDSM parent_label UHC6 remove_entry;
+into method label ZDSM parent_label UHC7 remove_entry;
+into method label ZDSM parent_label PCX1 remove_entry;
+into method label ZDSM parent_label PCX6 remove_entry;
+into method label ZDSM parent_label IOH1 remove_entry;
+into method label ZDSM parent_label IOH3 remove_entry;
+into method label ZDSM parent_label IOH7 remove_entry;
+into method label ZDSM parent_label IGBE remove_entry;
+into method label ZDSM parent_label HUB remove_entry;
 
 into device label UHC2 Insert begin
 Method (ZDSM, 4, NotSerialized)\n
@@ -212,7 +227,7 @@ Method (ZDSM, 4, NotSerialized)\n
 }\n
 end;
 
-into device label IOH1 insert begin
+into device label IOH7 insert begin
 Method (ZDSM, 4, NotSerialized)\n
 {\n
     Store (Package (0x16)\n
