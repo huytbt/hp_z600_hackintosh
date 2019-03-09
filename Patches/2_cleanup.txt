@@ -59,3 +59,6 @@ into_all all code_regex CreateByteField\s\(CRES,\s\\_SB.PCI0.LPC.COM2._Y15._MAX,
 # Remove unused Variables
 into method label WQAF parent_label WMID code_regex Local5\s=\sZero remove_matched;
 into method label WQAF parent_label WMID code_regex Local5\s=\s0x00 remove_matched;
+
+# Remove all _DSM Methods
+into_all method label _DSM remove_entry;
