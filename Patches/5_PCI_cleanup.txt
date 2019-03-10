@@ -167,82 +167,7 @@ Method (ZDSM, 4, NotSerialized)\n
 }
 end;
 
-into device label PCX1 insert begin
-Method (ZDSM, 4, NotSerialized)\n
-{\n
-    Store (Package (0x16)\n
-    {\n
-        "AAPL,slot-name", "Built In",\n
-		"name", "Intel PCIE Controller",\n
-		"model", Buffer (0x2D) {"82801JI (ICH10 Family) PCI Express Root Port #1"},\n
-		"device_type", Buffer (0x0F) {"PCIE Controller"}\n
-    }, Local0)\n
-    DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))\n
-    Return (Local0)\n
-}\n
-end;
-
-into device label PCX6 insert begin
-Method (ZDSM, 4, NotSerialized)\n
-{\n
-    Store (Package (0x16)\n
-    {\n
-        "AAPL,slot-name", "Built In",\n
-		"name", "Intel PCIE Controller",\n
-		"model", Buffer (0x2D) {"82801JI (ICH10 Family) PCI Express Root Port #5"},\n
-		"device_type", Buffer (0x0F) {"PCIE Controller"}\n
-    }, Local0)\n
-    DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))\n
-    Return (Local0)\n
-}\n
-end;
-
-into device label IOH1 insert begin
-Method (ZDSM, 4, NotSerialized)\n
-{\n
-    Store (Package (0x16)\n
-    {\n
-        "AAPL,slot-name", "Built In",\n
-		"name", "Intel HUB PCIE Controller",\n
-		"model", Buffer (0x2D) {"5520/5500/X58 I/O Hub PCI Express Root Port #1"},\n
-		"device_type", Buffer (0x0F) {"HUB PCIE Controller"}\n
-    }, Local0)\n
-    DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))\n
-    Return (Local0)\n
-}\n
-end;
-
-into device label IOH3 insert begin
-Method (ZDSM, 4, NotSerialized)\n
-{\n
-    Store (Package (0x16)\n
-    {\n
-        "AAPL,slot-name", "Built In",\n
-		"name", "Intel HUB PCIE Controller",\n
-		"model", Buffer (0x2D) {"5520/5500/X58 I/O Hub PCI Express Root Port #3"},\n
-		"device_type", Buffer (0x0F) {"HUB PCIE Controller"}\n
-    }, Local0)\n
-    DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))\n
-    Return (Local0)\n
-}\n
-end;
-
-into device label IOH7 insert begin
-Method (ZDSM, 4, NotSerialized)\n
-{\n
-    Store (Package (0x16)\n
-    {\n
-        "AAPL,slot-name", "Built In",\n
-		"name", "Intel HUB PCIE Controller",\n
-		"model", Buffer (0x2D) {"5520/5500/X58 I/O Hub PCI Express Root Port #7"},\n
-		"device_type", Buffer (0x0F) {"HUB PCIE Controller"}\n
-    }, Local0)\n
-    DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))\n
-    Return (Local0)\n
-}\n
-end;
-
-into device label IGBE insert begin
+into device label BRCM insert begin
 Method (ZDSM, 4, NotSerialized)\n
 {\n
     Store (Package (0x16)\n
@@ -263,11 +188,13 @@ Method (ZDSM, 4, NotSerialized)\n
     Store (Package (0x16)\n
     {\n
         "AAPL,slot-name", "Built In",\n
-		"name", "Hub to ESI Controller",\n
-		"model", Buffer (0x2D) {"5520 I/O Hub to ESI Port"},\n
-		"device_type", Buffer (0x0F) {"Hub to ESI Controller"}\n
+		"name", "FireWire Controller",\n
+		"model", Buffer (0x2D) {"FW322/323 [TrueFire] 1394a Controller"},\n
+		"device_type", Buffer (0x0F) {"FireWire Controller"}\n
     }, Local0)\n
     DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))\n
     Return (Local0)\n
 }\n
 end;
+
+IOService:/AppleACPIPlatformExpert/PCI0@0/AppleACPIPCI/pci8086,2822@1F,2
