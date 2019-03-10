@@ -14,3 +14,6 @@
 - [ ] Sound
 - [ ] Sound over HDMI
 - [ ] Firewire
+- [ ] Sleep
+- [ ] Speedsetp
+- [ ] RAM Slots
