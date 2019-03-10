@@ -1,3 +1,16 @@
 # MacOSX on a HP Z600 Workstation
 
-ToDo ....
+## Todo
+
+- [ ] Cleanup dsdt
+- [ ] Recreate ssdt
+- [ ] Check kexts
+- [ ] Cleanup config.plist
+
+## Hardware
+- [ ] Ethernet
+- [ ] USB Ports
+- [ ] AMD Grafik
+- [ ] Sound
+- [ ] Sound over HDMI
+- [ ] Firewire
