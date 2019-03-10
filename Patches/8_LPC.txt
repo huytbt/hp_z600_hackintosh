@@ -19,3 +19,21 @@ Method (ZDSM, 4, NotSerialized)\n
     Return (Local0)\n
 }\n
 end;
+
+# Remove PS\2 Stuff
+into device label KBD remove_entry;
+into device label PS2M remove_entry;
+
+# Remove COM Stuff
+into scope label _SB.PCI0.LPC.COM1 remove_entry;
+into device label COM1 remove_entry;
+into_all all code_regex Notify\s\(\\_SB.PCI0.LPC.COM1,\s0x02\) remove_matched;
+into scope label _SB.PCI0.LPC.COM2 remove_entry;
+into device label COM2 remove_entry;
+into_all all code_regex Notify\s\(\\_SB.PCI0.LPC.COM2,\s0x02\) remove_matched;
+
+# Remove LPT Stuff
+into scope label _SB.PCI0.LPC.LPT0 remove_entry;
+into device label LPT0 remove_entry;
+into scope label _SB.PCI0.LPC.ECP0 remove_entry;
+into device label ECP0 remove_entry;

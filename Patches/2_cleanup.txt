@@ -66,14 +66,3 @@ into_all method label _DSM remove_entry;
 # Remove all _OSI things
 into method label _OSI remove_entry;
 into_all all code_regex OSFG\s\(\) remove_matched;
-
-# Remove PS\2 Stuff
-into device label KBD remove_entry;
-
-# Remove COM Stuff
-into scope label _SB.PCI0.LPC.COM1 remove_entry;
-into scope label _SB.PCI0.LPC.COM2 remove_entry;
-
-# Remove LPT Stuff
-into scope label _SB.PCI0.LPC.LPT0 remove_entry;
-into scope label _SB.PCI0.LPC.ECP0 remove_entry;
