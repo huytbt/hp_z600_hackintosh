@@ -2,18 +2,17 @@
 
 ## Todo
 
-- [ ] Cleanup dsdt
+- [x] Cleanup dsdt
 - [ ] Recreate ssdt
-- [ ] Check kexts
-- [ ] Cleanup config.plist
+- [x] Check kexts
+- [x] Cleanup config.plist
 
 ## Hardware
-- [ ] Ethernet
-- [ ] USB Ports
-- [ ] AMD Grafik
-- [ ] Sound
-- [ ] Sound over HDMI
-- [ ] Firewire
+- [x] Ethernet
+- [x] USB Ports
+- [x] AMD Grafik
+- [x] Sound
+- [x] Firewire
 - [ ] Sleep
 - [ ] Speedsetp
 - [ ] RAM Slots
