@@ -8,7 +8,7 @@ into device label PCI0 insert
 begin
 Device (SATA)\n
 {\n
-    Method (ZDSM, 4, NotSerialized)\n
+    Method (_DSM, 4, NotSerialized)\n
     {\n
         Name (_ADR, 0x00)\n
         Local0 = Package ()\n

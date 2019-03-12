@@ -5,7 +5,7 @@
 # Patch Version : 1.0
 
 into device label LPC Insert begin
-Method (ZDSM, 4, NotSerialized)\n
+Method (_DSM, 4, NotSerialized)\n
 {\n
     Local0 = Package (0x02)\n
     {\n

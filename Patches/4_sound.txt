@@ -28,7 +28,7 @@ Device (HDEF)\n
         Return (Package (0x02) { 0x0D, 0x05 })\n
     }\n
 \n
-    Method (ZDSM, 4, NotSerialized)\n
+    Method (_DSM, 4, NotSerialized)\n
     {\n
         Local0 = Package ()\n
         {\n
