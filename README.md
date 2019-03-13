@@ -8,11 +8,10 @@
 - [x] Firewire
 - [x] Sleep
 - [ ] Speedsetp
-- [ ] RAM Slots
 
 ## Todos
 - [x] Cleanup dsdt
 - [ ] Recreate ssdt
 - [x] Check kexts
 - [x] Cleanup config.plist
-
+- [ ] RAM Slots in About this mac right number
