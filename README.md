@@ -10,8 +10,11 @@
 - [ ] Speedsetp
 
 ## Todos
-- [x] Cleanup dsdt
+- [ ] RAM Slots in About this mac right number
 - [ ] Recreate ssdt
+- [ ] NVMe
+- [ ] SATA Controller
+- [ ] USB 3 Controller
+- [x] Cleanup dsdt
 - [x] Check kexts
 - [x] Cleanup config.plist
-- [ ] RAM Slots in About this mac right number
